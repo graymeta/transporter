@@ -118,7 +118,8 @@ func (e *Elasticsearch) applyOp(msg *message.Msg) (*message.Msg, error) {
 	switch msg.Op {
 	case message.Delete:
 		e.indexer.Delete(e.index, _type, id, false)
-		err = nil
+  		e.indexer.Flush()
+                err = nil
 	default:
 		err = e.indexer.Index(e.index, _type, id, "", "", nil, msg.Data, false)
 	}
