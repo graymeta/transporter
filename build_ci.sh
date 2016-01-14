@@ -1,5 +1,7 @@
 #!/bin/bash
-GOPATH=/gm/go:`pwd`/Godeps/_workspace
+#bypass godeps with manual vendor
+gp=$(cd ../../../../;pwd)
+GOPATH=$gp:`pwd`/vendor
 #GOPATH=/gm/go
 #go get -d ./...
 pushd cmd/transporter
